@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Profile(models.Model):
     channel_name = models.CharField(
         max_length=100,
@@ -32,3 +31,5 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Профиль"
         verbose_name_plural = "Профили"
+
+    

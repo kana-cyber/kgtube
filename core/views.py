@@ -4,6 +4,24 @@ from video.models import Video
 from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth.models import User
+from .forms import ProfileForm, UserCreateForm
+
+def registration(request):
+    context = {}
+    if request.method == "POST":
+        registration_form = UserCreateForm(request.POST)
+        if registration_form.is_valid():
+            new_user = registration_form.save(commit=False)
+            new_user.set_password(request.POST["password"])
+            new_user.save()
+            messages.success(request, "Вы успешно прошли регистрацию")
+
+    context["registration_form"] = UserCreateForm()
+    return render(request, "user/registration.html", context)
+
+
+
+
 
 
 # Create your views here.

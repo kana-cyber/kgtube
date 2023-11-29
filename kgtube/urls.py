@@ -25,7 +25,7 @@ from django.conf.urls.static import static
  
 urlpatterns = [ 
     path('admin/', admin.site.urls), 
-    path('', homepage), 
+     path('', videos, name="home"),
     path('about/', about_view), 
     path('playlists/', playlists), 
     # path('playlists/', views.playlists), 
@@ -46,6 +46,7 @@ urlpatterns = [
     path('<int:id>/', video, name='video'), 
     path('subscriber-add/<int:id>/', subscriber_add, name='subscriber-add'), 
     path('subscriber-remove/<int:id>/', subscriber_remove, name='subscriber-remove'), 
+    path('registration/', registration, name="registration"),
 ] 
  
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
